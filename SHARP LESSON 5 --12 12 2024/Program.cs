@@ -2,7 +2,7 @@
 
 while (true)
 {
-    Console.Write("Choose an option: 1 - Add a book, 2 - Delete a book, 3 - Show all books, 4 - exit: ");
+    Console.Write("\nChoose an option: 1 - Add a book, 2 - Delete a book, 3 - Show all books, 4 - exit: ");
     string? option = Console.ReadLine();
     int.TryParse(option, out var choice);
 
@@ -34,6 +34,7 @@ while (true)
     }
     else if (choice == 4)
     {
+        Console.WriteLine("Goodbye!");
         break;
     }
 }
@@ -63,7 +64,7 @@ class Book
     public void AddBook(Book book)
     {
         books.Add(book);
-        Console.WriteLine("Book added");
+        Console.WriteLine("Book added!");
     }
 
     public void RemoveBook(int index)
@@ -71,11 +72,11 @@ class Book
         if (index >= 0 && index < books.Count)
         {
             books.RemoveAt(index);
-            Console.WriteLine("Book removed");
+            Console.WriteLine("Book removed!");
         }
         else
         {
-            Console.WriteLine("Invalid index");
+            Console.WriteLine("Invalid index!");
         }
     }
 
