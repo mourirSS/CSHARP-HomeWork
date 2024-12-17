@@ -95,7 +95,12 @@ while (isTrue)
         } break;
 
         case "5":
-        // не знаю как сделать фильтрацию :(
+        {
+            Console.Write("Enter transport type to filter (Car, Bike, Bus, Truck): ");
+            var filterType = Console.ReadLine()!;
+            manager.FilterTransportsByType(filterType);
+        }
+            break;
 
         case "6":
         {
@@ -274,4 +279,23 @@ class TransportManager
         transports.RemoveAt(index);
         Console.WriteLine("Transport removed successfully.");
     }
+    
+    public void FilterTransportsByType(string type)
+    {
+        var filteredTransports = transports.Where(t =>
+            t.GetType().Name.Equals(type, StringComparison.OrdinalIgnoreCase)).ToList();
+
+        if (filteredTransports.Count == 0)
+        {
+            Console.WriteLine($"No transports of type {type} found.");
+            return;
+        }
+
+        Console.WriteLine($"List of all transports of type {type}:");
+        for (int i = 0; i < filteredTransports.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {filteredTransports[i].ShowInfo()}");
+        }
+    }
+
 }    
